@@ -1,338 +1,174 @@
-# Cisco Packet Tracer Multi-Level Network Architecture Portfolio
+# 🌐 Cisco Packet Tracer Multi-Level Network Architecture Portfolio
 
-คลังรวมโปรเจกต์การออกแบบและกำหนดค่าระบบเครือข่ายคอมพิวเตอร์ (Network Architecture) บนโปรแกรม Cisco Packet Tracer โดยเรียงลำดับจากระดับพื้นฐานสำหรับธุรกิจขนาดเล็ก ไปจนถึงระดับสถาปัตยกรรมเครือข่ายองค์กรขนาดใหญ่ที่มีความเสถียร ความปลอดภัย และความพร้อมใช้งานสูง (High Availability)
-
----
-
-## 📂 โครงสร้างพอร์ตโฟลิโอ (Portfolio Structure)
-
-* **Level 1: SOHO Network** – ระบบเครือข่ายสำหรับสำนักงานขนาดเล็กหรือโฮมออฟฟิศ
-* **Level 2: Campus LAN with VLANs** – ระบบเครือข่ายภายในองค์กรที่มีการแบ่งแยกเครือข่ายตามแผนกงาน
-* **Level 3: Enterprise Network with Redundancy** – ระบบเครือข่ายองค์กรที่มีการออกแบบเส้นทางสำรองเพื่อรองรับความต่อเนื่องในการให้บริการ
-* **Level 4: Multi-Site WAN & Security** – ระบบเชื่อมต่อเครือข่ายระหว่างหลายสาขาพร้อมมาตรการรักษาความปลอดภัยขั้นสูง
+A collection of Cisco Packet Tracer network architecture projects ranging from Small Office/Home Office (SOHO) deployments to Enterprise-grade infrastructures with redundancy, security, and multi-site connectivity.
 
 ---
 
-# 🟢 Level 1: SOHO Network (Small Office / Home Office)
+## 📖 Overview
 
-## 🎯 จุดประสงค์ของโปรเจกต์
+This repository demonstrates practical network design, implementation, and troubleshooting skills using Cisco Packet Tracer. Each project focuses on different networking concepts commonly used in real-world environments, including VLANs, Routing, Redundancy Protocols, VPNs, Wireless Infrastructure, and Network Security.
 
-โปรเจกต์นี้จัดทำขึ้นเพื่อจำลองการออกแบบและบริหารจัดการระบบเครือข่ายสำหรับสำนักงานขนาดเล็ก ธุรกิจ Startup หรือ Co-working Space ที่มีจำนวนผู้ใช้งานไม่เกิน 20 คน โดยมุ่งเน้นการสร้างสภาพแวดล้อมเครือข่ายที่สามารถใช้งานได้จริง มีความปลอดภัย และรองรับการขยายตัวในอนาคต
-
-วัตถุประสงค์หลักของโปรเจกต์ประกอบด้วย
-
-* ออกแบบโครงสร้างเครือข่ายพื้นฐานสำหรับผู้ใช้งานภายในองค์กร
-* รองรับการเชื่อมต่อทั้งแบบสาย LAN และเครือข่ายไร้สาย (Wi-Fi)
-* ใช้งานบริการ DHCP เพื่อแจกจ่าย IP Address ให้กับอุปกรณ์โดยอัตโนมัติ
-* ลดภาระการกำหนดค่า IP Address แบบ Manual ของผู้ดูแลระบบ
-* ประยุกต์ใช้งาน NAT Overload (PAT) เพื่อให้ผู้ใช้งานหลายเครื่องสามารถใช้งาน Public IP ร่วมกันได้
-* สร้างความเข้าใจเกี่ยวกับการทำงานของ Router, Switch, DHCP และ NAT ในสภาพแวดล้อมเครือข่ายจริง
+The portfolio is organized into four progressive levels, allowing learners and recruiters to easily evaluate networking competencies from foundational to advanced topics.
 
 ---
 
-## 🔬 เกณฑ์และวิธีการทดสอบระบบ (Verification Checklist)
+## 🗂 Portfolio Structure
 
-### 1. การทดสอบระบบ DHCP
-
-เปิดหน้าต่าง Desktop ของเครื่อง `PC-Admin` และเปลี่ยนการตั้งค่า IP Configuration เป็นโหมด DHCP
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ได้รับ IP Address ในเครือข่าย `192.168.1.0/24`
-* ได้รับ Default Gateway เป็น `192.168.1.1`
-* ได้รับ DNS Server เป็น `8.8.8.8`
-* ไม่มีช่องข้อมูลใดแสดงค่าเป็นว่าง (Blank)
+| Level      | Project                            | Key Technologies                                               |
+| ---------- | ---------------------------------- | -------------------------------------------------------------- |
+| 🟢 Level 1 | SOHO Network                       | DHCP, NAT/PAT, WLAN, IPv4                                      |
+| 🟡 Level 2 | Campus LAN with VLANs              | VLAN, Trunking, Router-on-a-Stick, EtherChannel, Port Security |
+| 🟠 Level 3 | Enterprise Network with Redundancy | HSRP, OSPF, STP/RSTP, High Availability                        |
+| 🔴 Level 4 | Multi-Site WAN & Security          | GRE over IPsec, ACL, AAA, RADIUS, WLC                          |
 
 ---
 
-### 2. การทดสอบการเชื่อมต่อเครือข่ายไร้สาย (Wi-Fi Connectivity)
+# 🟢 Level 1 — SOHO Network
 
-เชื่อมต่ออุปกรณ์ `Laptop-Wireless` เข้ากับเครือข่ายไร้สายที่ให้บริการโดย `Wi-Fi-Router`
+### Description
 
-ผลลัพธ์ที่คาดหวัง:
+Designed for a small office environment with fewer than 20 users. This project demonstrates the deployment of a basic business network with automatic IP address allocation, internet access, and wireless connectivity.
 
-* สามารถเชื่อมต่อเครือข่ายไร้สายได้สำเร็จ
-* ได้รับ IP Address จาก DHCP Server โดยอัตโนมัติ
-* สามารถสื่อสารกับอุปกรณ์ภายในเครือข่ายเดียวกันได้
+### Technologies
 
----
-
-### 3. การทดสอบการเชื่อมต่อปลายทาง (End-to-End Connectivity)
-
-เปิด Command Prompt บนเครื่อง `PC-Admin` และดำเนินการทดสอบด้วยคำสั่ง
-
-ping 8.8.8.8
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ระบบตอบกลับข้อความ Reply from 8.8.8.8 ครบทั้ง 4 ครั้ง
-* ไม่มีข้อความ Request Timed Out
-* ยืนยันได้ว่าอุปกรณ์สามารถสื่อสารออกสู่เครือข่ายภายนอกผ่าน Router ได้สำเร็จ
-
----
-
-### 4. การตรวจสอบการทำงานของ NAT
-
-เข้าสู่ CLI ของเราเตอร์ `R1-SOHO` และใช้คำสั่ง
-
-show ip nat translations
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ปรากฏรายการจับคู่ระหว่าง Private IP ภายในองค์กรและ Public IP ที่ใช้สำหรับออกสู่อินเทอร์เน็ต
-* มีการแสดงข้อมูล Inside Local และ Inside Global อย่างถูกต้อง
-* ข้อมูลในตาราง NAT จะปรากฏเมื่อมีการรับส่งข้อมูลจากเครื่องภายในไปยังเครือข่ายภายนอก
-
----
-
-## 🛠 เทคโนโลยีที่ใช้งาน
-
-* Cisco Router
-* Cisco Switch
-* DHCP Server
+* DHCP
 * NAT Overload (PAT)
-* Ethernet LAN
-* Wireless LAN (Wi-Fi)
+* Wireless LAN
 * IPv4 Addressing
 * Default Routing
 
----
+### Skills Demonstrated
 
-## 🎓 ทักษะที่ได้รับจากโปรเจกต์
-
-* การออกแบบเครือข่ายสำนักงานขนาดเล็ก
-* การกำหนดค่า Router และ Switch เบื้องต้น
-* การตั้งค่า DHCP Server
-* การกำหนดค่า NAT Overload (PAT)
-* การตรวจสอบและแก้ไขปัญหาการเชื่อมต่อเครือข่าย
-* การวิเคราะห์เส้นทางการรับส่งข้อมูลภายในและภายนอกองค์กร
-* การจัดทำเอกสาร Network Architecture สำหรับใช้งานจริง
-
+* Basic Router Configuration
+* Basic Switch Configuration
+* DHCP Deployment
+* NAT Configuration
+* Connectivity Troubleshooting
 
 ---
 
-# 🟡 Level 2: Campus LAN with VLANs
+# 🟡 Level 2 — Campus LAN with VLANs
 
-## 🎯 จุดประสงค์ของโปรเจกต์
+### Description
 
-โปรเจกต์นี้จัดทำขึ้นเพื่อจำลองการออกแบบระบบเครือข่ายสำหรับอาคารสำนักงานหรือองค์กรขนาดกลางที่มีการแบ่งหน่วยงานออกเป็นหลายแผนก เช่น IT, HR และ Finance โดยมุ่งเน้นการบริหารจัดการเครือข่ายภายในองค์กรให้มีประสิทธิภาพ ปลอดภัย และสามารถขยายระบบได้ในอนาคต
+Simulates a medium-sized office network with multiple departments. Network segmentation is implemented using VLANs to improve security and traffic management.
 
-วัตถุประสงค์หลักของโปรเจกต์ประกอบด้วย
+### Technologies
 
-* ออกแบบโครงสร้างเครือข่ายโดยแบ่งผู้ใช้งานออกเป็นหลาย VLAN ตามหน่วยงาน
-* เพิ่มความปลอดภัยของข้อมูลด้วยการแยก Broadcast Domain ระหว่างแผนก
-* ศึกษาการทำงานของ Inter-VLAN Routing ด้วยเทคนิค Router-on-a-Stick
-* ใช้งาน Trunk Link เพื่อรับส่งข้อมูลของหลาย VLAN ผ่านสายเชื่อมต่อเพียงเส้นเดียว
-* ประยุกต์ใช้งาน EtherChannel เพื่อเพิ่ม Bandwidth และรองรับความเสียหายของลิงก์
-* เสริมความปลอดภัยระดับ Access Layer ด้วย Port Security
+* VLAN
+* IEEE 802.1Q Trunking
+* Router-on-a-Stick
+* EtherChannel
+* Port Security
 
----
+### Skills Demonstrated
 
-## 🔬 เกณฑ์และวิธีการทดสอบระบบ (Verification Checklist)
-
-### 1. การตรวจสอบการกำหนดค่า VLAN
-
-เข้าสู่ CLI ของสวิตช์ `SW-Floor1` และ `SW-Floor2` จากนั้นใช้คำสั่ง
-
-show vlan brief
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ปรากฏ VLAN 10, VLAN 20 และ VLAN 30 ในระบบ
-* พอร์ตของผู้ใช้งานแต่ละแผนกถูกกำหนดให้อยู่ใน VLAN ที่ถูกต้อง
-* ไม่มีพอร์ตสำคัญตกค้างอยู่ใน VLAN 1 โดยไม่ได้ตั้งใจ
+* VLAN Design
+* Inter-VLAN Routing
+* Switch-to-Switch Trunk Configuration
+* Link Aggregation
+* Access Layer Security
 
 ---
 
-### 2. การตรวจสอบสถานะ EtherChannel
+# 🟠 Level 3 — Enterprise Network with Redundancy
 
-เข้าสู่ CLI ของสวิตช์และใช้คำสั่ง
+### Description
 
-show etherchannel summary
+Enterprise core network architecture designed for high availability and fault tolerance. Multiple redundant paths and gateway failover mechanisms are implemented to minimize downtime.
 
-ผลลัพธ์ที่คาดหวัง:
+### Technologies
 
-* ปรากฏ Logical Interface เช่น `Port-channel1 (Po1)`
-* สมาชิกของ EtherChannel อยู่ในสถานะทำงานปกติ
-* แสดงสถานะ `(SU)` ซึ่งหมายถึง Layer 2 และ Operational Up
+* HSRP
+* OSPF
+* Rapid Spanning Tree Protocol (RSTP)
+* Redundant Core Architecture
 
----
+### Skills Demonstrated
 
-### 3. การทดสอบ Inter-VLAN Routing
-
-ทดสอบการสื่อสารระหว่างเครื่องคอมพิวเตอร์ที่อยู่คนละ VLAN เช่น
-
-* `PC-IT-1` (VLAN 10)
-* `PC-HR-1` (VLAN 20)
-
-ดำเนินการ Ping ข้าม VLAN
-
-ผลลัพธ์ที่คาดหวัง:
-
-* สามารถ Ping หากันได้สำเร็จ
-* แสดงว่า Router-on-a-Stick และ Sub-Interface ทำงานถูกต้อง
-* ระบบสามารถรับส่งข้อมูลระหว่าง VLAN ได้ตามที่ออกแบบไว้
+* Dynamic Routing
+* Gateway Redundancy
+* Layer 2 Loop Prevention
+* Failover Testing
+* High Availability Design
 
 ---
 
-### 4. การทดสอบ Port Security
+# 🔴 Level 4 — Multi-Site WAN & Security
 
-จำลองเหตุการณ์โดยถอดสายจาก `PC-IT-1` แล้วเชื่อมต่ออุปกรณ์ใหม่เข้ากับพอร์ตเดิม
+### Description
 
-ผลลัพธ์ที่คาดหวัง:
+Enterprise WAN infrastructure connecting headquarters and branch offices through secure VPN tunnels over public networks while enforcing centralized authentication and access control.
 
-* สวิตช์ตรวจพบ MAC Address ที่ไม่ได้รับอนุญาต
-* พอร์ตเข้าสู่สถานะ Security Violation
-* พอร์ตถูกปิดการใช้งานอัตโนมัติ (Err-Disabled)
-* สถานะพอร์ตสามารถตรวจสอบได้จากคำสั่ง
+### Technologies
 
-show port-security interface
+* GRE over IPsec VPN
+* Extended ACL
+* AAA Authentication
+* RADIUS
+* Wireless LAN Controller (WLC)
 
----
+### Skills Demonstrated
 
-# 🟠 Level 3: Enterprise Network with Redundancy (High Availability)
-
-## 🎯 จุดประสงค์ของโปรเจกต์
-
-โปรเจกต์นี้จัดทำขึ้นเพื่อจำลองสถาปัตยกรรมเครือข่ายระดับองค์กรที่ต้องการความพร้อมใช้งานสูง (High Availability) และรองรับการทำงานอย่างต่อเนื่องแม้เกิดความเสียหายกับอุปกรณ์หรือเส้นทางสื่อสารบางส่วน
-
-วัตถุประสงค์หลักของโปรเจกต์ประกอบด้วย
-
-* ออกแบบโครงสร้าง Core Network แบบ Redundant
-* ศึกษาการทำงานของ HSRP เพื่อสร้าง Default Gateway สำรอง
-* ใช้งาน OSPF สำหรับการแลกเปลี่ยนเส้นทางแบบ Dynamic Routing
-* ปรับแต่ง Spanning Tree Protocol เพื่อลดความเสี่ยงจาก Network Loop
-* ทดสอบกลไก Failover และ Fault Tolerance ในสภาพแวดล้อมจำลอง
+* Site-to-Site VPN Deployment
+* Access Control Implementation
+* Centralized Authentication
+* Enterprise Wireless Management
+* WAN Security Architecture
 
 ---
 
-## 🔬 เกณฑ์และวิธีการทดสอบระบบ (Verification Checklist)
+## 🛠 Software Used
 
-### 1. การตรวจสอบสถานะ HSRP
-
-เข้าสู่ CLI ของ `Core-SW1` และ `Core-SW2`
-
-ใช้คำสั่ง
-
-show standby brief
-
-ผลลัพธ์ที่คาดหวัง:
-
-* `Core-SW1` แสดงสถานะเป็น Active
-* `Core-SW2` แสดงสถานะเป็น Standby
-* Virtual IP Address ถูกประกาศใช้งานอย่างถูกต้อง
+* Cisco Packet Tracer 8.x
+* Cisco IOS CLI
+* IPv4 Networking
+* Routing & Switching Technologies
 
 ---
 
-### 2. การตรวจสอบเส้นทาง OSPF
+## 🚀 Getting Started
 
-เข้าสู่ CLI ของ Core Switch และ Router
+### Clone Repository
 
-ใช้คำสั่ง
+```bash
+git clone https://github.com/yourusername/Cisco-PacketTracer-Network-Portfolio.git
+```
 
-show ip route
+### Open Project Files
 
-ผลลัพธ์ที่คาดหวัง:
+Navigate to the desired project folder and open the `.pkt` file using Cisco Packet Tracer.
 
-* ปรากฏเส้นทางจากเครือข่ายอื่นภายในองค์กร
-* เส้นทางที่เรียนรู้จาก OSPF มีสัญลักษณ์ `O`
-* Routing Table ของอุปกรณ์มีข้อมูลสอดคล้องกัน
+Example:
 
----
+```text
+Level-1-SOHO-Network/
+ └── SOHO_Network.pkt
 
-### 3. การทดสอบ Failover
+Level-2-Campus-VLAN/
+ └── Campus_LAN_VLAN.pkt
 
-เริ่มต้น Ping แบบต่อเนื่องจากเครื่องผู้ใช้งานไปยังปลายทางในเครือข่าย
+Level-3-Enterprise-Redundancy/
+ └── Enterprise_HA.pkt
 
-จากนั้นจำลองเหตุขัดข้องโดย
-
-* ปิดพอร์ตหรือถอดสายเชื่อมต่อหลักระหว่าง `Core-SW1` และ `Access-SW1`
-
-ผลลัพธ์ที่คาดหวัง:
-
-* การสื่อสารยังคงดำเนินต่อได้
-* ทราฟฟิกถูกเปลี่ยนเส้นทางไปยังอุปกรณ์สำรองโดยอัตโนมัติ
-* อาจเกิด Packet Loss เพียงเล็กน้อยในช่วงเปลี่ยนเส้นทาง
-* ผู้ใช้งานยังสามารถเข้าถึงบริการเครือข่ายได้ตามปกติ
+Level-4-MultiSite-WAN-Security/
+ └── MultiSite_Secure_WAN.pkt
+```
 
 ---
 
-# 🔴 Level 4: Multi-Site WAN & Security
+## 🎯 Learning Outcomes
 
-## 🎯 จุดประสงค์ของโปรเจกต์
+By completing these projects, the following networking competencies are demonstrated:
 
-โปรเจกต์นี้จัดทำขึ้นเพื่อจำลองโครงสร้างเครือข่ายองค์กรที่มีหลายสาขา โดยเชื่อมต่อสำนักงานใหญ่และสาขาย่อยผ่านเครือข่ายสาธารณะ พร้อมเสริมความปลอดภัยของข้อมูลและการควบคุมสิทธิ์การเข้าถึงทรัพยากรภายในองค์กร
-
-วัตถุประสงค์หลักของโปรเจกต์ประกอบด้วย
-
-* ออกแบบเครือข่ายแบบ Multi-Site WAN
-* สร้าง Site-to-Site VPN ด้วย GRE over IPsec
-* ศึกษาการบริหารจัดการระบบ Wireless แบบ Centralized ผ่าน WLC
-* ใช้งาน AAA และ RADIUS สำหรับการพิสูจน์ตัวตน
-* กำหนดนโยบายการเข้าถึงข้อมูลด้วย Extended ACL
-
----
-
-## 🔬 เกณฑ์และวิธีการทดสอบระบบ (Verification Checklist)
-
-### 1. การตรวจสอบสถานะ VPN Tunnel
-
-เข้าสู่ CLI ของเราเตอร์ทั้งสองฝั่ง
-
-ใช้คำสั่ง
-
-show crypto isakmp sa
-
-ผลลัพธ์ที่คาดหวัง:
-
-* สถานะแสดงเป็น `QM_IDLE`
-* IPsec Tunnel ถูกสร้างสำเร็จ
-* ทั้งสองสาขาสามารถสื่อสารผ่าน VPN ได้
-
----
-
-### 2. การตรวจสอบการบริหารจัดการ Wireless LAN Controller
-
-เข้าสู่ระบบบริหารจัดการของ `HQ-WLC`
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ตรวจพบ Access Point ที่ลงทะเบียนในระบบ
-* `HQ-AP` และ `BR-AP` อยู่ในสถานะ Registered
-* สามารถบริหารจัดการ Access Point จากศูนย์กลางได้
-
----
-
-### 3. การทดสอบ Access Control List (ACL)
-
-ทดสอบเข้าถึง `Finance-Server`
-
-ผลลัพธ์ที่คาดหวัง:
-
-* `HQ-Admin` สามารถเข้าถึงเซิร์ฟเวอร์ได้
-* ผู้ใช้งานทั่วไปไม่สามารถเข้าถึงเซิร์ฟเวอร์ได้
-* ACL ทำงานตามนโยบายที่กำหนดไว้
-
----
-
-### 4. การทดสอบ AAA และ RADIUS
-
-ทดสอบการเข้าสู่ระบบผ่านอุปกรณ์เครือข่ายหรือเครือข่ายไร้สาย
-
-ผลลัพธ์ที่คาดหวัง:
-
-* ระบบร้องขอ Username และ Password
-* อุปกรณ์ส่งคำขอไปยัง Radius Server
-* ผู้ใช้ที่ได้รับอนุญาตสามารถเข้าสู่ระบบได้
-* ผู้ใช้ที่ไม่มีสิทธิ์ถูกปฏิเสธการเข้าใช้งาน
-
----
-
-# 🛠️ วิธีการนำไฟล์ไปใช้งาน (How to Use)
-
-1. ติดตั้ง Cisco Packet Tracer เวอร์ชัน 8.x หรือใหม่กว่า
-2. Clone หรือดาวน์โหลด Repository ลงบนเครื่องคอมพิวเตอร์
-3. เปิดไฟล์ `.pkt` ของแต่ละระดับที่ต้องการศึกษา
-4. ตรวจสอบสถานะพอร์ตและการเชื่อมต่อให้เป็นสีเขียวทั้งหมด
-5. หากพบพอร์ตอยู่ในสถานะกำลัง Converge ของ STP สามารถใช้ปุ่ม `Fast Forward Time` เพื่อเร่งกระบวนการจำลองเวลา
-6. ใช้ CLI ของอุปกรณ์เพื่อศึกษาคำสั่งและดำเนินการทดสอบตาม Verification Checklist ของแต่ละโปรเจกต์
+* Network Design
+* VLAN Segmentation
+* Inter-VLAN Routing
+* Dynamic Routing (OSPF)
+* First Hop Redundancy Protocols (HSRP)
+* VPN Technologies
+* Access Control Lists (ACL)
+* AAA & RADIUS Authentication
+* Enterprise Wireless Infrastructure
+* Network Troubleshooting
+* High Availability Architecture
