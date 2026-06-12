@@ -14,12 +14,12 @@ The portfolio is organized into four progressive levels, allowing learners and r
 
 ## 🗂 Portfolio Structure
 
-| Level      | Project                            | Key Technologies                                               |
-| ---------- | ---------------------------------- | -------------------------------------------------------------- |
-| 🟢 Level 1 | SOHO Network                       | DHCP, NAT/PAT, WLAN, IPv4                                      |
-| 🟡 Level 2 | Campus LAN with VLANs              | VLAN, Trunking, Router-on-a-Stick, EtherChannel, Port Security |
-| 🟠 Level 3 | Enterprise Network with Redundancy | HSRP, OSPF, STP/RSTP, High Availability                        |
-| 🔴 Level 4 | Multi-Site WAN & Security          | GRE over IPsec, ACL, AAA, RADIUS, WLC                          |
+| Network Level | Project | Technologies |
+|---------------|---------|--------------|
+| 🟢 SOHO | SOHO Network | DHCP, NAT/PAT, WLAN, IPv4 |
+| 🟡 Campus | Campus LAN with VLANs | VLAN, Trunking, Router-on-a-Stick, EtherChannel, Port Security |
+| 🟠 Enterprise | Enterprise Network with Redundancy | HSRP, OSPF, STP/RSTP, High Availability |
+| 🔴 Multi-Site | WAN & Security | GRE over IPsec, ACL, AAA, RADIUS, WLC |
 
 ---
 
