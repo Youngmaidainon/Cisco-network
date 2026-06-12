@@ -210,11 +210,3 @@ show ip interface brief
 ```
 
 ตรวจสอบสถานะของทุก Interface
-
-### Connectivity Test
-
-```bash
-ping 8.8.8.8
-```
-
-ทดสอบการเชื่อมต่อจากเครื่อง Client ไปยังเครือข่ายภายนอก
