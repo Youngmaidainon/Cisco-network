@@ -57,39 +57,7 @@ show vlan brief
 
 ---
 
-### 2. การตรวจสอบ Trunk Link
-
-บน SW-Floor1 ให้ตรวจสอบสถานะพอร์ตที่เชื่อมต่อกับ R1-Core
-
-```bash
-show interfaces trunk
-```
-
-ผลลัพธ์ต้องแสดง
-
-- Native VLAN = 99
-- VLAN 10, 20, 30 และ 99 ถูก Allow ผ่าน Trunk
-- สถานะพอร์ตเป็น Trunk
-
----
-
-### 3. การตรวจสอบ EtherChannel
-
-ตรวจสอบสถานะ EtherChannel ระหว่าง SW-Floor1 และ SW-Floor2
-
-```bash
-show etherchannel summary
-```
-
-ผลลัพธ์ต้องแสดง
-
-- Port-Channel 1 (Po1)
-- สถานะขึ้นเป็น `(SU)`
-- พอร์ต FastEthernet0/23 และ FastEthernet0/24 เข้าร่วมกลุ่มสำเร็จ
-
----
-
-### 4. การทดสอบ Inter-VLAN Routing
+### 2. การทดสอบ Inter-VLAN Routing
 
 จากเครื่อง PC-IT-1
 
@@ -97,38 +65,11 @@ show etherchannel summary
 ping 10.0.20.11
 ```
 
-ทดสอบติดต่อจาก PC-IT-1 ไปยังเครื่อง PC-HR-2
-
-จากนั้นทดสอบเพิ่มเติม
-
-```bash
-ping 10.0.20.12
-```
-
 ทดสอบติดต่อไปยังเครื่อง PC-HR-2 ผลลัพธ์ต้องได้รับ Reply ครบทุก Packet
 
 ---
 
-### 5. การตรวจสอบ Sub-Interface บน Router
-
-เข้าสู่ CLI ของ R1-Core
-
-```bash
-show ip interface brief
-```
-
-ผลลัพธ์ต้องแสดง
-
-- GigabitEthernet0/0/0.10
-- GigabitEthernet0/0/0.20
-- GigabitEthernet0/0/0.30
-- GigabitEthernet0/0/0.99
-
-โดยทุก Interface ต้องมีสถานะ Up/Up
-
----
-
-### 6. การทดสอบ Port Security
+### 3. การทดสอบ Port Security
 
 บนพอร์ต FastEthernet0/1 ของ SW-Floor1
 
