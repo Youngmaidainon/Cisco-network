@@ -1,68 +1,220 @@
-## R1-SOHO
+# ⚙️ Device Configuration
 
+## 🟢 R1-SOHO
+
+### Basic Configuration
+
+```cisco
 enable
 configure terminal
 hostname R1-SOHO
+```
 
- --- คอนฟิกพอร์ต LAN & WAN ---
+### Configure LAN Interface
+
+```cisco
 interface GigabitEthernet0/0/0
-    ip address 192.168.1.1 255.255.255.0
-    ip nat inside -- พอร์ตที่หันหน้าเข้าหาเครือข่ายภายในบริษัท --
-    no shutdown
+ ip address 192.168.1.1 255.255.255.0
+ ip nat inside
+ no shutdown
+```
 
+**Purpose**
+
+* Default Gateway สำหรับอุปกรณ์ภายในองค์กร
+* กำหนดให้เป็น NAT Inside Interface
+
+---
+
+### Configure WAN Interface
+
+```cisco
 interface GigabitEthernet0/0/1
-    ip address 203.0.113.1 255.255.255.252
-    ip nat outside -- พอร์ตขา WAN ที่ต่อเชื่อมออกไปทางฝั่งผู้ให้บริการอินเทอร์เน็ตภายนอก --
-    no shutdown
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+ no shutdown
+```
 
- --- ตั้งค่าเส้นทางออกอินเทอร์เน็ต (Static Route) ---
+**Purpose**
+
+* เชื่อมต่อไปยัง ISP Router
+* กำหนดให้เป็น NAT Outside Interface
+
+---
+
+### Configure Default Route
+
+```cisco
 ip route 0.0.0.0 0.0.0.0 203.0.113.2
+```
 
- --- คอนฟิก DHCP Server แจกจ่ายไอพีภายในองค์กร ---
-ip dhcp excluded-address 192.168.1.1 192.168.1.9 -- ip dhcp excluded-address [ห้ามแจก IP เริ่มต้น] [จนถึง IP สิ้นสุด] --
-ip dhcp pool SOHO_POOL -- ip dhcp pool [ชื่อกลุ่ม] --
-    network 192.168.1.0 255.255.255.0
-    default-router 192.168.1.1
-    dns-server 8.8.8.8
+**Purpose**
 
- --- ทำระบบ NAT (PAT) เพื่อแปลงไอพีภายในให้ออกเน็ตได้ ---
-access-list 1 permit 192.168.1.0 0.0.0.255 
--- สร้างกฎ Standard Access List เบอร์ 1 เพื่อระบุว่า หมายเลข IP วงภายในวงไหนบ้างที่มีสิทธิ์ (Permit) ได้รับสิทธิ์ในการแปลงค่าไอพีเพื่อออกไปใช้งานอินเทอร์เน็ตภายนอกองค์กรได้ --
+* กำหนดเส้นทางออกสู่เครือข่ายภายนอกทั้งหมดผ่าน ISP Router
 
-ip nat inside source list 1 interface GigabitEthernet0/0/1 overload 
--- สั่งการให้เราเตอร์แปลงไอพีภายในทั้งหมดที่ระบุไว้ใน Access List เบอร์ 1 ให้มาจับคู่ใช้งาน Public IP ของอินเทอร์เฟซขาออกตัวเดียวกัน โดยอาศัยหมายเลข Port ของระบบช่วยจำแนกแยกแยะ --
+---
 
+### Configure DHCP Server
+
+```cisco
+ip dhcp excluded-address 192.168.1.1 192.168.1.9
+
+ip dhcp pool SOHO_POOL
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 8.8.8.8
+```
+
+**Purpose**
+
+* สำรอง IP Address ช่วง 192.168.1.1 - 192.168.1.9 ไว้สำหรับอุปกรณ์เครือข่าย
+* แจกจ่าย IP Address ให้กับเครื่องลูกข่ายโดยอัตโนมัติ
+* กำหนด Gateway และ DNS Server ให้ผู้ใช้งาน
+
+---
+
+### Configure NAT Overload (PAT)
+
+```cisco
+access-list 1 permit 192.168.1.0 0.0.0.255
+
+ip nat inside source list 1 interface GigabitEthernet0/0/1 overload
+```
+
+**Purpose**
+
+* อนุญาตให้เครือข่าย 192.168.1.0/24 ใช้งาน NAT
+* แปลง Private IP หลายเครื่องให้ออกอินเทอร์เน็ตผ่าน Public IP เดียว
+* ใช้ Port Translation (PAT) เพื่อรองรับการเชื่อมต่อพร้อมกันหลายอุปกรณ์
+
+---
+
+### Save Configuration
+
+```cisco
 end
-write memory (จะเซฟหรือไม่ก็ได้ใน cisco packet tracer)
+write memory
+```
 
+---
 
-## ISP-Router
+## 🌐 ISP-Router
 
+### Basic Configuration
+
+```cisco
 enable
 configure terminal
 hostname ISP-Router
+```
 
+### Configure Customer Link
+
+```cisco
 interface GigabitEthernet0/0/0
-    ip address 203.0.113.2 255.255.255.252
-    no shutdown
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
+```
 
+### Configure Internet Segment
+
+```cisco
 interface GigabitEthernet0/0/1
-    ip address 8.8.8.1 255.255.255.0
-    no shutdown
+ ip address 8.8.8.1 255.255.255.0
+ no shutdown
+```
+
+### Save Configuration
+
+```cisco
 end
 write memory
+```
 
+**Purpose**
 
-## SW1
+* จำลองผู้ให้บริการอินเทอร์เน็ต (ISP)
+* เชื่อมต่อเครือข่าย SOHO เข้ากับเครือข่ายภายนอก
+* ทำหน้าที่เป็น Next Hop ของ R1-SOHO
 
+---
+
+## 🖧 SW1
+
+### Basic Configuration
+
+```cisco
 enable
 configure terminal
 hostname SW1
+```
 
+### Configure Management Interface
+
+```cisco
 interface vlan 1
-    ip address 192.168.1.2 255.255.255.0
-    no shutdown
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+```
 
-ip default-gateway 192.168.1.1 -- ip default-gateway [IP ของเราเตอร์] --
+### Configure Default Gateway
+
+```cisco
+ip default-gateway 192.168.1.1
+```
+
+**Purpose**
+
+* กำหนด Management IP สำหรับบริหารจัดการสวิตช์
+* กำหนดเส้นทางออกจากสวิตช์ไปยัง Router
+
+### Save Configuration
+
+```cisco
 end
 write memory
+```
+
+---
+
+# 🔍 Verification Commands
+
+### DHCP
+
+```cisco
+show ip dhcp binding
+```
+
+ตรวจสอบรายการ IP Address ที่ถูกแจกให้กับ Client
+
+### NAT
+
+```cisco
+show ip nat translations
+```
+
+ตรวจสอบการแปลง Private IP เป็น Public IP
+
+### Routing
+
+```cisco
+show ip route
+```
+
+ตรวจสอบ Routing Table ของ Router
+
+### Interface Status
+
+```cisco
+show ip interface brief
+```
+
+ตรวจสอบสถานะของทุก Interface
+
+### Connectivity Test
+
+```bash
+ping 8.8.8.8
+```
+
+ทดสอบการเชื่อมต่อจากเครื่อง Client ไปยังเครือข่ายภายนอก
