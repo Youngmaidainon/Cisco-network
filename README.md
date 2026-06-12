@@ -132,7 +132,7 @@ Enterprise WAN infrastructure connecting headquarters and branch offices through
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/Cisco-PacketTracer-Network-Portfolio.git
+git clone https://github.com/Youngmaidainon/Cisco-network.git
 ```
 
 ### Open Project Files
