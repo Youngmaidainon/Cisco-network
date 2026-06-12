@@ -11,21 +11,3 @@
 | **PC-Admin**        | FastEthernet 0        | DHCP        | 255.255.255.0   | 192.168.1.1     | จะได้รับ IP ช่วง 192.168.1.10 - 192.168.1.254 |
 | **Printer-LAN**     | FastEthernet 0        | 192.168.1.9 | 255.255.255.0   | 192.168.1.1     | ฟิกซ์ IP ไว้เพื่อให้เรียกใช้งานง่าย           |
 | **Laptop-Wireless** | Wireless 0            | DHCP        | 255.255.255.0   | 192.168.0.1     | ได้รับ IP อัตโนมัติจากวง Wi-Fi-Router         |
-
-graph LR
-    PC[PC-Admin<br>DHCP]
-    PRN[Printer-LAN<br>192.168.1.9]
-    SW[SW1<br>192.168.1.2]
-    R1[R1-SOHO<br>LAN: 192.168.1.1<br>WAN: 203.0.113.1]
-    ISP[ISP-Router<br>203.0.113.2<br>8.8.8.1]
-    DNS[Internet-Server<br>8.8.8.8]
-    WIFI[Wi-Fi Router<br>WAN: 192.168.1.5<br>LAN: 192.168.0.1]
-    LAP[Laptop-Wireless<br>DHCP]
-
-    PC --> SW
-    PRN --> SW
-    WIFI --> SW
-    SW --> R1
-    R1 --> ISP
-    ISP --> DNS
-    LAP -. Wi-Fi .-> WIFI
