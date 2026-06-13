@@ -120,10 +120,7 @@ Enterprise WAN infrastructure connecting headquarters and branch offices through
 
 ## 🛠 Software Used
 
-* Cisco Packet Tracer 8.x
-* Cisco IOS CLI
-* IPv4 Networking
-* Routing & Switching Technologies
+* Cisco Packet Tracer 9.x
 
 ---
 
