@@ -50,7 +50,7 @@ tracert 10.1.20.100
 
 #### 📷 ผลการทดสอบ Traceroute
 
-![Traceroute Verification]()
+![Traceroute Verification](test/tracert.png)
 
 ---
 
@@ -67,7 +67,7 @@ ping 8.8.8.8
 
 #### 📷 ผลการทดสอบ Connectivity
 
-![Connectivity Verification]()
+![Connectivity Verification](test/ping.png)
 
 ---
 
@@ -88,10 +88,10 @@ show standby brief
 #### 📷 ผลการทดสอบ HSRP
 
 CSW1-Core
-![HSRP Verification]()
+![HSRP Verification](test/show-standby-brief-CSW1.png")
 
 CSW2-Core
-![HSRP Verification]()
+![HSRP Verification](test/show-standby-brief-CSW2.png")
 
 ---
 
@@ -110,7 +110,7 @@ show ip ospf neighbor
 
 #### 📷 ผลการทดสอบ OSPF
 
-![OSPF Verification]()
+![OSPF Verification](test/show-ip-ospf-neighbor-CSW1.png")
 
 ---
 
@@ -143,4 +143,4 @@ ping 8.8.8.8
 
 #### 📷 ผลการทดสอบ Failover
 
-![Failover Verification]()
+![Failover Verification](test/delete-cable-and-ping.png")
