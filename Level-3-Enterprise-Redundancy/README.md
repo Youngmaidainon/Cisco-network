@@ -88,9 +88,11 @@ show standby brief
 #### 📷 ผลการทดสอบ HSRP
 
 CSW1-Core
+
 ![HSRP Verification](test/show-standby-brief-CSW1.png)
 
 CSW2-Core
+
 ![HSRP Verification](test/show-standby-brief-CSW2.png)
 
 ---
