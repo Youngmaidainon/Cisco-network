@@ -1,17 +1,17 @@
 ## 🔴 Level 3: Enterprise Network with Redundancy (HSRP + OSPF + Dual WAN)
 
-### 🎯 จุดประสงค์ของโปรเจกต์
+### 🎯 จุดประสงค์ของโปรเจกต์ (Project Objectives)
 
-เพื่อจำลองสถาปัตยกรรมระบบเครือข่ายองค์กรที่มีความพร้อมใช้งานสูง (High Availability) และรองรับการทำงานต่อเนื่องแม้เกิดความเสียหายของอุปกรณ์หรือเส้นทางเชื่อมต่อ โดยใช้เทคโนโลยี Redundant Core Switch, HSRP, Dynamic Routing และ Dual WAN
+โปรเจกต์นี้จัดทำขึ้นเพื่อจำลองและออกแบบสถาปัตยกรรมระบบเครือข่ายระดับองค์กรที่มีความพร้อมใช้งานสูง (**High Availability: HA**) เพื่อรองรับการดำเนินงานของธุรกิจได้อย่างต่อเนื่อง (**Business Continuity**) แม้เกิดความเสียหายบนอุปกรณ์หลักหรือเส้นทางการเชื่อมต่อ โดยมีวัตถุประสงค์เชิงเทคนิคดังนี้
 
-* ออกแบบระบบ Core Network แบบ Redundant ด้วย Core Switch จำนวน 2 ตัว
-* ใช้งาน HSRP (Hot Standby Router Protocol) เพื่อสร้าง Default Gateway สำรองสำหรับผู้ใช้งาน
-* กำหนด Spanning Tree Root Primary และ Secondary เพื่อควบคุมเส้นทาง Layer 2
-* ใช้งาน OSPF (Open Shortest Path First) สำหรับ Dynamic Routing ระหว่าง Core Switch และ Edge Router
-* ออกแบบ Dual WAN เพื่อเชื่อมต่อออกสู่อินเทอร์เน็ตผ่านผู้ให้บริการ 2 ราย
-* เพิ่มความสามารถในการ Failover เมื่อ Router หรือ WAN Link ขัดข้อง
-* แยกกลุ่มผู้ใช้งานด้วย VLAN และบริหารจัดการระบบผ่าน SVI บน Layer 3 Switch
-* ทดสอบการสลับเส้นทางอัตโนมัติเมื่อเกิดความเสียหายของอุปกรณ์หลัก
+* **High Availability Core Network:** ออกแบบระบบเครือข่ายหลักแบบ Redundant ด้วย Layer 3 Core Switch จำนวน 2 ตัว เพื่อขจัดปัญหา Single Point of Failure (SPOF)
+* **Gateway Redundancy (HSRP):** ประยุกต์ใช้โปรโตคอล Hot Standby Router Protocol เพื่อสร้าง Default Gateway สำรอง ช่วยให้ผู้ใช้งานสามารถใช้งานเครือข่ายได้อย่างไร้รอยต่อเมื่อเกิดเหตุขัดข้อง
+* **Spanning Tree Protocol (STP) Tuning:** กำหนดค่า Root Primary และ Secondary เพื่อควบคุมโครงสร้างและเส้นทางในระดับ Layer 2 ป้องกันการเกิด Loop และสลับสายสำรองได้ทันที
+* **Dynamic Routing (OSPF):** คอนฟิกโปรโตคอล OSPF ระหว่าง Core Switch และ Edge Router เพื่อให้ระบบแลกเปลี่ยนและอัปเดตตารางเส้นทาง (Routing Table) อัตโนมัติ
+* **Dual WAN Link Infrastructure:** ออกแบบระบบอินเทอร์เน็ตขาออกให้รองรับโครงสร้างแบบ Dual WAN ผ่านผู้ให้บริการ (ISP) 2 ราย เพื่อทำ Link Redundancy
+* **Automated Failover Mechanism:** เพิ่มความสามารถในการตรวจจับและสลับเส้นทางโดยอัตโนมัติ (Failover) ทั้งระบบเครือข่ายภายในและฝั่ง WAN Link
+* **Network Segmentation (VLAN & SVI):** แยกกลุ่มและประเภทผู้ใช้งานด้วย VLAN เพื่อความปลอดภัยและความง่ายในการบริหารจัดการ พร้อมทำ Routing ภายในผ่าน Switch Virtual Interface (SVI)
+* **System Verification & Stress Test:** จำลองสถานการณ์และทดสอบการล่มของระบบ (Failover Testing) เพื่อวัดประสิทธิภาพ ความเร็วในการ Convergence และความทนทานของสถาปัตยกรรมที่ออกแบบ
 
 ---
 
