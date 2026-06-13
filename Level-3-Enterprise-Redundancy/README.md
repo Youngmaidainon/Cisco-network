@@ -88,10 +88,10 @@ show standby brief
 #### 📷 ผลการทดสอบ HSRP
 
 CSW1-Core
-![HSRP Verification](test/show-standby-brief-CSW1.png")
+![HSRP Verification](test/show-standby-brief-CSW1.png)
 
 CSW2-Core
-![HSRP Verification](test/show-standby-brief-CSW2.png")
+![HSRP Verification](test/show-standby-brief-CSW2.png)
 
 ---
 
@@ -110,7 +110,7 @@ show ip ospf neighbor
 
 #### 📷 ผลการทดสอบ OSPF
 
-![OSPF Verification](test/show-ip-ospf-neighbor-CSW1.png")
+![OSPF Verification](test/show-ip-ospf-neighbor-CSW1.png)
 
 ---
 
@@ -143,4 +143,4 @@ ping 8.8.8.8
 
 #### 📷 ผลการทดสอบ Failover
 
-![Failover Verification](test/delete-cable-and-ping.png")
+![Failover Verification](test/delete-cable-and-ping.png)
