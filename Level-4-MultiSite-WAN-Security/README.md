@@ -105,7 +105,7 @@ O 10.0.10.0/24
 
 1. ไปที่ Config → Wireless0
 2. กำหนด SSID
-3. เลือก WPA2-Enterprise
+3. เลือก WPA2
 4. กรอก Username และ Password
 
 ตัวอย่าง
