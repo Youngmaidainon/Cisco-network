@@ -1,4 +1,4 @@
-## 🔴 Level 3: Enterprise Network with Redundancy (HSRP + OSPF + Dual WAN)
+## 🟠 Level 3: Enterprise Network with Redundancy (HSRP + OSPF + Dual WAN)
 
 ### 🎯 จุดประสงค์ของโปรเจกต์ (Project Objectives)
 
