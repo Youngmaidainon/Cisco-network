@@ -75,6 +75,10 @@ show crypto ipsec sa
 
 ต้องมีตัวเลขเพิ่มขึ้น แสดงว่ามีการเข้ารหัสและถอดรหัสข้อมูลจริง
 
+#### 📸 ผลลัพธ์ของทั้งสองคำสั่ง
+
+![Check VPN status](test/Check-VPN-status-(GRE-over-IPsec).png)
+
 ---
 
 ## 2️. ตรวจสอบ Dynamic Routing (OSPF)
@@ -96,6 +100,10 @@ O 10.0.10.0/24
 ```
 
 ตัวอักษร `O` หมายถึงเส้นทางที่เรียนรู้ผ่าน OSPF
+
+#### 📸 Routing Table ที่แสดงเส้นทาง OSPF
+
+![show ip route](test/show-ip-route.png)
 
 ---
 
@@ -130,6 +138,18 @@ Password : password01
 * ผ่านการยืนยันตัวตนจาก AAA Server
 * ได้รับ IP Address จาก DHCP Server
 
+#### 📸 แสดงสถานะเชื่อมต่อ Wi-Fi และได้รับ IP Address สำเร็จ
+
+Smartphone
+
+![Smartphone](test/Smartphone.png)
+
+Laptop
+
+![Laptop](test/Laptop0.png)
+
+![Laptop dhcp](test/Laptop0-dhcp.png)
+
 ---
 
 ## 4️. ตรวจสอบ End-to-End Connectivity
@@ -159,3 +179,7 @@ Reply from 10.0.10.10
 * GRE Tunnel ทำงานปกติ
 * IPsec VPN เข้ารหัสข้อมูลได้ถูกต้อง
 * สามารถเข้าถึงทรัพยากรข้ามสาขาได้
+
+#### ผลลัพธ์การ Ping สำเร็จ
+
+![End-to-End Connectivity](test/End-to-End-Connectivity.png)
