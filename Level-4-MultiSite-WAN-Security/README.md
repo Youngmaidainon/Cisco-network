@@ -136,7 +136,7 @@ Password : password01
 
 ### คำสั่งที่ใช้
 
-จาก PC หรือ Smartphone ฝั่ง Branch
+จาก PC ฝั่ง Branch
 
 ```bash
 ping 10.0.10.10
