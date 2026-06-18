@@ -13,4 +13,5 @@
 | **LAP_HQ**        | FastEthernet0       | DHCP         | DHCP            | DHCP            | Lightweight Access Point กระจายสัญญาณที่สำนักงานใหญ่ |
 | **PC_HQ**         | FastEthernet0       | DHCP         | DHCP            | DHCP            | เครื่องแอดมินสำหรับตั้งค่า WLC ผ่าน Web GUI          |
 | **Laptop0**       | Wireless0           | DHCP         | DHCP            | DHCP            | เครื่องทดสอบระบบ 802.1X (Corporate_WiFi)             |
+| **Smartphone0**       | Wireless0           | DHCP         | DHCP            | DHCP            | เครื่องทดสอบระบบ 802.1X (Corporate_WiFi)             |
 | **PC_Branch**     | FastEthernet0       | DHCP         | DHCP            | DHCP            | เครื่องผู้ใช้งานสาขาสำหรับทดสอบ Ping ข้าม VPN        |
